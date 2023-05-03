@@ -11,6 +11,7 @@ mod entity;
 mod repository;
 mod state;
 mod service;
+mod middleware;
 
 #[tokio::main]
 async fn main() {
