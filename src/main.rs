@@ -12,6 +12,7 @@ mod repository;
 mod state;
 mod service;
 mod middleware;
+mod handler;
 
 #[tokio::main]
 async fn main() {

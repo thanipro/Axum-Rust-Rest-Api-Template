@@ -8,7 +8,6 @@ use crate::state::token_state::TokenState;
 use crate::state::user_state::UserState;
 use axum::routing::{get, IntoMakeService};
 use axum::{middleware, Router};
-use sqlx::{MySql, Pool};
 use std::sync::Arc;
 use tower::ServiceBuilder;
 use tower_http::trace::TraceLayer;
