@@ -4,6 +4,10 @@ use crate::config::database::DatabaseTrait;
 
 mod config;
 mod routes;
+mod dto;
+mod error;
+mod response;
+mod entity;
 
 #[tokio::main]
 async fn main() {
