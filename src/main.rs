@@ -8,6 +8,7 @@ mod dto;
 mod error;
 mod response;
 mod entity;
+mod repository;
 
 #[tokio::main]
 async fn main() {
