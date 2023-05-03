@@ -9,6 +9,8 @@ mod error;
 mod response;
 mod entity;
 mod repository;
+mod state;
+mod service;
 
 #[tokio::main]
 async fn main() {
