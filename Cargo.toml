@@ -1,8 +1,24 @@
 [package]
-name = "Axum-Rust-Api-Boilerplate"
+name = "axum_rust_api_boilerplate"
 version = "0.1.0"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
+axum = { version = "0.6.3"}
+hyper = { version = "0.14.23", features = ["full"] }
+tokio = { version = "1.24.2", features = ["full"] }
+tower = { version = "0.4.13", features = ["full"] }
+tower-http = { version = "0.4.0", features = ["full"] }
+dotenv = "0.15.0"
+serde =  { version = "1.0.152", features = ["derive"] }
+jsonwebtoken = "8.3.0"
+thiserror = "1.0.40"
+chrono = {version = "0.4.24", features = ["serde"]}
+bcrypt = "0.14.0"
+serde_json = "1.0.95"
+mockall = "0.11.4"
+sqlx = { version = "0.6.3", features = [ "runtime-tokio-native-tls", "migrate", "chrono", "time"] }
+validator = { version = "0.16.0", features = ["derive"] }
+async-trait = "0.1.68"
+sqlx-cli = "0.6.3"
+
