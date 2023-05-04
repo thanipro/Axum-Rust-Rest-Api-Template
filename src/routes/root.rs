@@ -1,7 +1,6 @@
 use super::auth;
 use crate::config::database::Database;
 use crate::middleware::auth as auth_middleware;
-use crate::middleware::logger;
 use crate::routes::{profile, register};
 use crate::state::auth_state::AuthState;
 use crate::state::token_state::TokenState;
@@ -29,7 +28,6 @@ pub fn routes(db_conn: Arc<Database>) -> IntoMakeService<Router> {
 
     let app_router = Router::new()
         .nest("/api", merged_router)
-        .layer(ServiceBuilder::new().layer(middleware::from_fn(logger::logger)))
         .layer(TraceLayer::new_for_http());
 
     app_router.into_make_service()

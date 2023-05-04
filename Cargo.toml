@@ -21,4 +21,5 @@ sqlx = { version = "0.6.3", features = ["runtime-tokio-native-tls", "migrate", "
 validator = { version = "0.16.0", features = ["derive"] }
 async-trait = "0.1.68"
 sqlx-cli = "0.6.3"
+tracing-subscriber = "0.3.17"
 

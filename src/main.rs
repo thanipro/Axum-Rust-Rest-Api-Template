@@ -22,6 +22,7 @@ async fn main() {
         .unwrap_or_else(|e| panic!("Database error: {}", e.to_string()));
 
     let host = format!("0.0.0.0:{}", parameter::get("PORT"));
+    tracing_subscriber::fmt::init();
     axum::Server::bind(&host.parse().unwrap())
         .serve(routes::root::routes(Arc::new(connection)))
         .await
