@@ -3,7 +3,7 @@ use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 use validator::Validate;
 
-#[derive(Clone, Debug, Serialize, Deserialize, Validate)]
+#[derive(Clone, Serialize, Deserialize, Validate)]
 pub struct UserLoginDto {
     #[validate(email(message = "Email is not valid"))]
     pub email: String,
@@ -15,7 +15,7 @@ pub struct UserLoginDto {
     pub password: String,
 }
 
-#[derive(Clone, Debug, Serialize, Deserialize, Validate)]
+#[derive(Clone, Serialize, Deserialize, Validate)]
 pub struct UserRegisterDto {
     #[validate(email(message = "Email is not valid"))]
     pub email: String,
@@ -59,5 +59,24 @@ impl UserReadDto {
             updated_at: model.updated_at,
             is_active: model.is_active,
         }
+    }
+}
+
+impl std::fmt::Debug for UserLoginDto {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("User")
+            .field("email", &self.email)
+            .finish()
+    }
+}
+
+impl std::fmt::Debug for UserRegisterDto {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("User")
+            .field("first_name", &self.first_name)
+            .field("last_name", &self.last_name)
+            .field("user_name", &self.user_name)
+            .field("email", &self.email)
+            .finish()
     }
 }
