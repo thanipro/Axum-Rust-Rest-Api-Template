@@ -24,7 +24,7 @@ For example, if you want to use postgres, you will need to update the `src/confi
 ```
 use crate::parameter;
 use async_trait::async_trait;
-use sqlx::{Error, MySql, Pool, Postgres};
+use sqlx::{Error, Pool, Postgres};
 
 pub struct Database {
     pool: Pool<Postgres>,
