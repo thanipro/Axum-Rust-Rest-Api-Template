@@ -5,27 +5,27 @@ use crate::state::token_state::TokenState;
 use axum::extract::State;
 use axum::{http, http::Request, middleware::Next, response::IntoResponse};
 use jsonwebtoken::errors::ErrorKind;
+use axum::headers::authorization::{Authorization, Bearer};
+use axum::headers::Header;
 
 pub async fn auth<B>(
     State(state): State<TokenState>,
     mut req: Request<B>,
     next: Next<B>,
 ) -> Result<impl IntoResponse, ApiError> {
-    let token = req
-        .headers()
-        .get(http::header::AUTHORIZATION)
-        .and_then(|header| header.to_str().ok())
-        .map(|header_value| {
-            let bearer = "Bearer ";
-            if header_value.starts_with(bearer) {
-                header_value[bearer.len()..].to_string()
-            } else {
-                header_value.to_string()
+    let mut headers = req
+        .headers_mut()
+        .iter()
+        .filter_map(|(header_name, header_value)| {
+            if header_name == http::header::AUTHORIZATION {
+                return Some(header_value);
             }
+            None
         });
 
-    return match token {
-        Some(token) => match state.token_service.retrieve_token_claims(&token) {
+    let header: Authorization<Bearer> = Authorization::decode(&mut headers).map_err(|_| TokenError::MissingToken)?;
+    let token = header.token();
+     match state.token_service.retrieve_token_claims(token) {
             Ok(token_data) => {
                 let user = state.user_repo.find_by_email(token_data.claims.email).await;
                 match user {
@@ -39,10 +39,8 @@ pub async fn auth<B>(
             Err(err) => {
                 return match err.kind() {
                     ErrorKind::ExpiredSignature => Err(TokenError::TokenExpired)?,
-                    _ => Err(TokenError::InvalidToken(token))?,
+                    _ => Err(TokenError::InvalidToken(token.parse().unwrap_or_default()))?,
                 };
             }
-        },
-        _ => return Err(TokenError::MissingToken)?,
-    };
+        }
 }
