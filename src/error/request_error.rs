@@ -1,11 +1,8 @@
 use crate::response::api_response::ApiErrorResponse;
 use async_trait::async_trait;
-use axum::body::HttpBody;
-use axum::extract::rejection::JsonRejection;
-use axum::extract::FromRequest;
-use axum::http::Request;
+use axum::{body::HttpBody,http::Request, BoxError, Json};
+use axum::extract::{rejection::JsonRejection, FromRequest};
 use axum::response::{IntoResponse, Response};
-use axum::{BoxError, Json};
 use serde::de::DeserializeOwned;
 use thiserror::Error;
 use validator::Validate;

@@ -6,7 +6,7 @@ CREATE TABLE `user` (
                         `email` varchar(255) NOT NULL,
                         `password` varchar(255) NOT NULL,
                         `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                        `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+                        `updated_at` timestamp NULL,
                         `is_active` tinyint(1) NOT NULL DEFAULT '0',
                         PRIMARY KEY (`id`),
                         UNIQUE KEY `user_name` (`user_name`),

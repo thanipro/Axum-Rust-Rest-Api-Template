@@ -1,6 +1,4 @@
-use crate::error::api_error::ApiError;
-use crate::error::token_error::TokenError;
-use crate::error::user_error::UserError;
+use crate::error::{api_error::ApiError, token_error::TokenError, user_error::UserError};
 use crate::repository::user_repository::UserRepositoryTrait;
 use crate::service::token_service::TokenServiceTrait;
 use crate::state::token_state::TokenState;

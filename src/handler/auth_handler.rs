@@ -1,13 +1,9 @@
-use crate::dto::token_dto::TokenReadDto;
-use crate::dto::user_dto::UserLoginDto;
-use crate::error::api_error::ApiError;
-use crate::error::request_error::ValidatedRequest;
-use crate::error::user_error::UserError;
+use crate::dto::{token_dto::TokenReadDto, user_dto::UserLoginDto};
+use crate::error::{api_error::ApiError,request_error::ValidatedRequest, user_error::UserError};
 use crate::repository::user_repository::UserRepositoryTrait;
 use crate::service::token_service::TokenServiceTrait;
 use crate::state::auth_state::AuthState;
-use axum::extract::State;
-use axum::Json;
+use axum::{extract::State, Json};
 
 pub async fn auth(
     State(state): State<AuthState>,

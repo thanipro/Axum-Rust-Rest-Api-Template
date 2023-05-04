@@ -1,9 +1,7 @@
 use crate::dto::user_dto::{UserReadDto, UserRegisterDto};
-use crate::error::api_error::ApiError;
-use crate::error::request_error::ValidatedRequest;
+use crate::error::{api_error::ApiError, request_error::ValidatedRequest};
 use crate::state::user_state::UserState;
-use axum::extract::State;
-use axum::Json;
+use axum::{extract::State, Json};
 
 pub async fn register(
     State(state): State<UserState>,
