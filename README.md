@@ -1,10 +1,10 @@
-# Axum-Rust-Api-Boilerplate
+# Axum-Rust-Rest-Api-Template
 
-This project is an open source boilerplate built with Rust's Axum framework.
+This project is an open source Rest Api Template built with Rust's Axum framework.
 
 ## Why this project?
 
-I have been learning rust for some time now and I noticed a lack of open source axum boilerplates that define directory structure the way I like and I'm used to. Most other projects have all the code placed in a single `main.rs` file.
+I have been learning rust for some time now and I noticed a lack of open source rust Rest ApI template template that define directory structure the way I like and I'm used to ( SOA ). Most other projects have all the code placed in a single `main.rs` file.
 ## Features
 
 This project uses Axum framework and SQLx for DB access layer, as well as other wonderful packages. It includes three basic routes: register, login, and profile page.
